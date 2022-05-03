@@ -5,7 +5,7 @@ login.addEventListener("submit", (e)=>{
     let usrName = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     if(usrName === "john" && password === "1234"){
-        window.location.replace("/week2/dashboard.html");
+        window.location.replace("./dashboard.html");
     }
     else{
         element.classList.add("unhide");
