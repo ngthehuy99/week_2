@@ -10,6 +10,14 @@
     position: relative;
     padding: 15px 10px 15px 50px;
 }
+.menu__item-active {
+    color: #25b5f5;
+}
+.menu__item:hover {
+    cursor: pointer;
+    color: #25b5f5;
+    background-color: #F5F5F5;
+}
 .menu-icons {
     position: absolute;
     top: 20%;
@@ -22,6 +30,7 @@
 }
 .account{
     /* min-height: 40px; */
+    position: relative;
 }
 .user__icon{
     font-size: 30px !important;
@@ -104,9 +113,38 @@
     background-color: #F28E19;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
 }
 .chart {
     background-color: #ffffff;
     width: 100%;
-
+}
+.burger-icon {
+    display: none !important;
+    font-size: 30px !important;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+@media screen and (max-width: 414px) {
+    .burger-icon{
+        display: block !important;
+    }
+    .nav {
+        display: none;
+        position: absolute;
+        height: 100%;
+    }
+    .account .justify-end {
+        justify-content: unset;
+    }
+    .user__account {
+        flex-direction: column;
+    }
+    .contain {
+        width: auto;
+    }
+    .table {
+        display: none;
+    }
 }

@@ -19,7 +19,7 @@
                     <li class="menu__item"><a>
                         <i class="material-icons menu-icons">important_devices</i>
                         Device Manager</a></li>
-                    <li class="menu__item">
+                    <li class="menu__item menu__item-active ">
                         <i class="material-icons menu-icons">dashboard</i>
                         Dashboard</a></li>
                     <li class="menu__item"><a>
@@ -32,6 +32,7 @@
             </div>
             <div class="l-10">
                 <div class="row account justify-end align-content-center">
+                    <i class="material-icons burger-icon">menu</i>
                     <div class="user__account">
                         <i class="material-icons user__icon">account_circle</i>
                         <span class="account__name">Welcome John</span>
@@ -47,7 +48,7 @@
                                             <th class="table__column text-left">Device</th>
                                             <th class="table__column">MAC Address</th>
                                             <th class="table__column">IP</th>
-                                            <th class="table__column">Create Date</th>
+                                            <th class="table__column">Created Date</th>
                                             <th class="table__column">Power Consumption (Kw/H)</th>
                                         </tr>
                                     </thead>
@@ -61,22 +62,22 @@
                                         </tr>
                                         <tr class="table__row">
                                             <td class="table__item text-left">Washer</td>
-                                            <td class="table__item">00:1B:44:3A:B7</td>
-                                            <td class="table__item">127.0.0.2</td>
+                                            <td class="table__item">00:1B:44:3A:B8</td>
+                                            <td class="table__item">127.0.0.3</td>
                                             <td class="table__item">2021-05-31</td>
                                             <td class="table__item">60</td>
                                         </tr>
                                         <tr class="table__row">
                                             <td class="table__item text-left">Refrigerator</td>
-                                            <td class="table__item">00:1B:44:3A:B7</td>
-                                            <td class="table__item">127.0.0.2</td>
+                                            <td class="table__item">00:1B:44:3A:B9</td>
+                                            <td class="table__item">127.0.0.4</td>
                                             <td class="table__item">2021-05-31</td>
                                             <td class="table__item">60</td>
                                         </tr>
                                         <tr class="table__row">
                                             <td class="table__item text-left">Selling Fan</td>
-                                            <td class="table__item">00:1B:44:3A:B7</td>
-                                            <td class="table__item">127.0.0.2</td>
+                                            <td class="table__item">00:1B:44:3A:B2</td>
+                                            <td class="table__item">127.0.0.5</td>
                                             <td class="table__item">2021-05-31</td>
                                             <td class="table__item">60</td>
                                         </tr>
@@ -99,11 +100,12 @@
                             </div>
                             <div class="l-7">
                                 <div class="form">
-                                    <div class="form__item">
-                                        <input class="form__input" type="text" placeholder="name">
-                                        <input class="form__input" type="text" placeholder="IP">
-                                        <button class="form__btn btn" type="submit">ADD DEVICE</button>
-                                    </div>
+                                    <form class="form__item">
+                                        <input id="form__item-name" class="form__input" type="text" placeholder="name">
+                                        <input id="form__item-ip" class="form__input" type="text" placeholder="IP">
+                                        <input id="form__item-power" class="form__input" type="text" placeholder="Power">
+                                        <button id="add__btn" class="form__btn btn" type="submit" >ADD DEVICE</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -113,32 +115,6 @@
 
         </div>
     </div>
-    <script>
-        var xValues = ["TV", "Washer", "Refrigerator", "Selling Fan"];
-        var yValues = [50, 60, 80, 100];
-        var barColors = [
-          "#FF5F81",
-          "#FF9F40",
-          "#FFCD56",
-          "#4BC0C0"
-        ];
-        
-        new Chart("myChart", {
-          type: "doughnut",
-          data: {
-            labels: xValues,
-            datasets: [{
-              backgroundColor: barColors,
-              data: yValues
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: "World Wide Wine Production 2018"
-            }
-          }
-        });
-    </script>
+<script src="/src/js/dashboard.js"></script>
 </body>
 </html>
