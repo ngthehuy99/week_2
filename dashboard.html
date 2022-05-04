@@ -7,90 +7,108 @@
     <title>Document</title>
     <link rel="stylesheet" href="/src/css/dashboard.css">
     <link rel="stylesheet" href="/src/css/grid.css">
+    <link rel="stylesheet" href="/src/css/base.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div class="app grid wide">
         <div class="container row">
-            <div class="nav l-3">
-                <ul>
-                    <li>Dashboard</li>
-                    <li>Logs</li>
-                    <li>Settings</li>
+            <div class="nav l-2">
+                <ul class="menu">
+                    <li class="menu__item"><a>
+                        <i class="material-icons menu-icons">important_devices</i>
+                        Device Manager</a></li>
+                    <li class="menu__item">
+                        <i class="material-icons menu-icons">dashboard</i>
+                        Dashboard</a></li>
+                    <li class="menu__item"><a>
+                        <i class="material-icons menu-icons">history</i>
+                        Logs</a></li>
+                    <li class="menu__item"><a>
+                        <i class="material-icons menu-icons">settings</i>
+                        Settings</a></li>
                 </ul>
             </div>
-            <div class="l-7">
-                <div class="">
-                    <div class="row">
-                        <div class="account">
-                            <img src="" alt="account image">
-                            <span class="account__name">Welcome John</span>
-                        </div>
+            <div class="l-10">
+                <div class="row account justify-end align-content-center">
+                    <div class="user__account">
+                        <i class="material-icons user__icon">account_circle</i>
+                        <span class="account__name">Welcome John</span>
                     </div>
-                    <div class="row">
-                        <div class="">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Device</th>
-                                        <th>MAC Address</th>
-                                        <th>IP</th>
-                                        <th>Create Date</th>
-                                        <th>Power Consumption (Kw/H)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>TC</td>
-                                        <td>00:1B:44:3A:B7</td>
-                                        <td>127.0.0.2</td>
-                                        <td>2021-05-31</td>
-                                        <td>60</td>
-                                    </tr>
-                                    <tr>
-                                        <td>TC</td>
-                                        <td>00:1B:44:3A:B7</td>
-                                        <td>127.0.0.2</td>
-                                        <td>2021-05-31</td>
-                                        <td>60</td>
-                                    </tr>
-                                    <tr>
-                                        <td>TC</td>
-                                        <td>00:1B:44:3A:B7</td>
-                                        <td>127.0.0.2</td>
-                                        <td>2021-05-31</td>
-                                        <td>60</td>
-                                    </tr>
-                                    <tr>
-                                        <td>TC</td>
-                                        <td>00:1B:44:3A:B7</td>
-                                        <td>127.0.0.2</td>
-                                        <td>2021-05-31</td>
-                                        <td>60</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-    
+                </div>
+                <div class="row main-contain justify-content-center">
+                    <div class="contain">
+                        <div class="row">
+                            <div class="table">
+                                <table class="table__content">
+                                    <thead>
+                                        <tr class="table__header">
+                                            <th class="table__column text-left">Device</th>
+                                            <th class="table__column">MAC Address</th>
+                                            <th class="table__column">IP</th>
+                                            <th class="table__column">Create Date</th>
+                                            <th class="table__column">Power Consumption (Kw/H)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table__row">
+                                            <td class="table__item text-left">TV</td>
+                                            <td class="table__item">00:1B:44:3A:B7</td>
+                                            <td class="table__item">127.0.0.2</td>
+                                            <td class="table__item">2021-05-31</td>
+                                            <td class="table__item">60</td>
+                                        </tr>
+                                        <tr class="table__row">
+                                            <td class="table__item text-left">Washer</td>
+                                            <td class="table__item">00:1B:44:3A:B7</td>
+                                            <td class="table__item">127.0.0.2</td>
+                                            <td class="table__item">2021-05-31</td>
+                                            <td class="table__item">60</td>
+                                        </tr>
+                                        <tr class="table__row">
+                                            <td class="table__item text-left">Refrigerator</td>
+                                            <td class="table__item">00:1B:44:3A:B7</td>
+                                            <td class="table__item">127.0.0.2</td>
+                                            <td class="table__item">2021-05-31</td>
+                                            <td class="table__item">60</td>
+                                        </tr>
+                                        <tr class="table__row">
+                                            <td class="table__item text-left">Selling Fan</td>
+                                            <td class="table__item">00:1B:44:3A:B7</td>
+                                            <td class="table__item">127.0.0.2</td>
+                                            <td class="table__item">2021-05-31</td>
+                                            <td class="table__item">60</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="table__footer">
+                                            <td class="table__item text-left" colspan="4">Total</td>
+                                            <td class="table__item">290</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+        
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="l-6">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                        <div class="l-6">
-                            <div class="">
-                                <input type="text" placeholder="name">
-                                <input type="text" placeholder="IP">
-                                <button type="submit">ADD DEVICE</button>
+                        <div class="row">
+                            <div class="l-5">
+                                <div class="chart">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="l-7">
+                                <div class="form">
+                                    <div class="form__item">
+                                        <input class="form__input" type="text" placeholder="name">
+                                        <input class="form__input" type="text" placeholder="IP">
+                                        <button class="form__btn btn" type="submit">ADD DEVICE</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <header class="header">
-            </header>
-            <div class="contain">
-                
             </div>
 
         </div>
@@ -121,6 +139,6 @@
             }
           }
         });
-        </script>
+    </script>
 </body>
 </html>

@@ -1,3 +1,112 @@
-.header {
+.nav {
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+}
+.menu {
+    list-style: none;
+    padding-left: 0;
+}
+.menu__item {
+    position: relative;
+    padding: 15px 10px 15px 50px;
+}
+.menu-icons {
+    position: absolute;
+    top: 20%;
+    left: 6%;
+}
+.user__account {
+    padding: 10px;
     display: flex;
+    align-items: center;
+}
+.account{
+    /* min-height: 40px; */
+}
+.user__icon{
+    font-size: 30px !important;
+}
+.account__name {
+    padding: 0 10px;
+}
+.main-contain {
+    background-color: #F5F5F5;
+    padding: 50px 0;
+}
+.contain {
+    justify-content: center;
+    min-width: 900px;
+    max-width: 1200px;
+}
+.table{ 
+    margin-bottom: 50px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+}
+.table__content{
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+    border-radius: 5px !important;
+}
+.table__column{
+    text-align: right;
+    padding: 10px
+}
+.table__header{
+    border-bottom: 3px solid #E5E6E8;
+}
+.table__row{
+    border-bottom: 1px solid #E5E6E8;
+}
+.table__item {
+    text-align: right;
+    padding: 10px;
+}
+.table__footer{
+    background-color: #FAFBFB;
+    font-weight: 600;
+}
+.form{
+    flex-grow: 1;
+    background-color: #ffffff;
+    margin-left: 30px;
+    height: 100%;
+
+}
+.form__item{
+    padding: 40px;
+    flex-grow: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+.form__input{
+    background-color: #F6F3F3;
+    outline: none;
+    border: none;
+    margin-bottom: 30px;
+    padding: 15px 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+}
+.form__btn {
+    width: fit-content;
+    padding: 10px 30px !important;
+    margin: 0 auto;
+}
+.btn {
+    padding: 10px 15px;
+    color: #ffffff;
+    border: transparent;
+    border-radius: 10px;
+    background-color: #F28E19;
+    font-size: 16px;
+    font-weight: 600;
+}
+.chart {
+    background-color: #ffffff;
+    width: 100%;
+
 }
