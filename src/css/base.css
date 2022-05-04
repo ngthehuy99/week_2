@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+.d-none{
+    display: none;
+}
 .justify-end{
     justify-content: flex-end;
 }

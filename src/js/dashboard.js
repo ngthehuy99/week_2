@@ -1,9 +1,3 @@
-// let xRand = Math.floor((Math.random()*100)+1);
-// let a=[];
-// for(var i=0;i<4;i++){
-
-// }
-
 let btnAdd = document.querySelector('.form__item');
 let tbody = document.querySelector('tbody');
 
@@ -17,8 +11,6 @@ function validate(){
 
 btnAdd.addEventListener("submit", (e)=>{
     e.preventDefault(); 
-
-
     let name = nameInput.value;
     let ip = ipInput.value;
     let power = powerInput.value;
