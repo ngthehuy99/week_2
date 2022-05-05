@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="/src/css/dashboard.css">
     <link rel="stylesheet" href="/src/css/grid.css">
     <link rel="stylesheet" href="/src/css/base.css">
@@ -14,19 +14,21 @@
 <body>
     <div class="app grid wide">
         <div class="container row">
+            
             <div class="nav l-2">
-                <div class="user__account d-none">
+                <div class="burger__account">
                     <i class="material-icons user__icon">account_circle</i>
                     <span class="account__name">Welcome John</span>
                 </div>
+                <div class="nav__title">
+                    <i class="material-icons">important_devices</i>
+                    <span>Device Manager</span>
+                </div>
                 <ul class="menu">
-                    <li class="menu__item"><a>
-                        <i class="material-icons menu-icons">important_devices</i>
-                        Device Manager</a></li>
                     <li class="menu__item menu__item-active ">
                         <i class="material-icons menu-icons">dashboard</i>
                         Dashboard</a></li>
-                    <li class="menu__item"><a>
+                    <li class="menu__item"><a href="/logs.html">
                         <i class="material-icons menu-icons">history</i>
                         Logs</a></li>
                     <li class="menu__item"><a>
@@ -36,7 +38,7 @@
             </div>
             <div class="l-10">
                 <div class="row account justify-end align-content-center">
-                    <i class="material-icons burger-icon">menu</i>
+                    
                     <div class="user__account">
                         <i class="material-icons user__icon">account_circle</i>
                         <span class="account__name">Welcome John</span>
@@ -44,6 +46,10 @@
                 </div>
                 <div class="row main-contain justify-content-center">
                     <div class="contain">
+                        <button id="burger" class="" type="submit">
+                            <i class="material-icons burger-icon">menu</i>
+                            <i class="material-icons close-icon">close</i>
+                        </button>
                         <div class="row">
                             <div class="table">
                                 <table class="table__content">
@@ -89,7 +95,7 @@
                                     <tfoot>
                                         <tr class="table__footer">
                                             <td class="table__item text-left" colspan="4">Total</td>
-                                            <td class="table__item">290</td>
+                                            <td id="total-power" class="table__item ">290</td>
                                         </tr>
                                     </tfoot>
                                 </table>

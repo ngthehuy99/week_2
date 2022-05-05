@@ -1,60 +1,188 @@
-let btnAdd = document.querySelector('.form__item');
+let submitForm = document.querySelector('.form__item');
 let tbody = document.querySelector('tbody');
+
+let local = JSON.parse(localStorage.getItem("deviceArray"));
 
 let nameInput = document.querySelector('#form__item-name');
 let ipInput = document.querySelector('#form__item-ip');
 let powerInput = document.querySelector('#form__item-power');
 
+let menu = document.querySelector('.nav');
+let burger = document.querySelector('#burger');
+let closeIcon = document.querySelector('.close-icon');
+let menuIcon = document.querySelector('.burger-icon');
+
+
+
+burger.addEventListener("click", ()=>{
+    if(menu.classList.contains("show")){
+        menu.classList.remove("show");
+        closeIcon.classList.remove("show");
+        menuIcon.style.display = "block";
+    }
+    else {
+        menu.classList.add("show");
+        closeIcon.classList.add("show");
+        menuIcon.style.display = "none";
+    }
+});
+    
+
+
 function validate(){
     
 }
+if(local){
+    local.forEach(element => {
+        let template = `
+        <tr class="table__row">
+            <td class="table__item text-left">${element.name}</td>
+            <td class="table__item">00:1B:44:3A:B7</td>
+            <td class="table__item">${element.ip}</td>
+            <td class="table__item">2021-05-31</td>
+            <td class="table__item">${element.powerConsumption}</td>
+        </tr>
+        `;
+        tbody.innerHTML += template;
+        updateChart();
+    });
+}
+const table = document.querySelector(".table__content");
+const tableBody = table.getElementsByTagName("tbody")[0];
+const tfoot = table.getElementsByTagName("tfoot")[0];
 
-btnAdd.addEventListener("submit", (e)=>{
+submitForm.addEventListener("submit", (e)=>{
     e.preventDefault(); 
     let name = nameInput.value;
-    let ip = ipInput.value;
+    let ipVal = ipInput.value;
     let power = powerInput.value;
+
+    if(name == ""){
+        alert("Khong the de trong ten cua thiet bi");
+        return;
+    }else if (ipVal == "") {
+        alert("Khong the de trong ip");
+        return;
+    }else if (power == "") {
+        alert("Khong the de trong power consumption");
+        return;
+    }
+
     let template = `
         <tr class="table__row">
             <td class="table__item text-left">${name}</td>
             <td class="table__item">00:1B:44:3A:B7</td>
-            <td class="table__item">${ip}</td>
+            <td class="table__item">${ipVal}</td>
             <td class="table__item">2021-05-31</td>
             <td class="table__item">${power}</td>
         </tr>
     `;
     tbody.innerHTML += template;
-    console.log(tbody);
-});
-
-
-// Chartjs
-var xValues = ["TV", "Washer", "Refrigerator", "Selling Fan"];
-var yValues = [50, 60, 80, 100];
-var barColors = [
-    "#FF5F81",
-    "#FF9F40",
-    "#FFCD56",
-    "#4BC0C0"
-];
-
-new Chart("myChart", {
-    type: "doughnut",
-    data: {
-    labels: xValues,
-    datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-    }]
-    },
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Power Consumption'
-            }
-        },
+    const tableRows = Array.from(tableBody.querySelectorAll("tr"))
+    let totalPower = tableRows.reduce((pre, row) => {
+        return (pre += parseInt(row.cells[4].innerHTML));
+      }, 0);
+      console.log(totalPower);
+      tfoot.querySelector("tr").children[1].innerHTML = totalPower;
+    if(local){
+        localStorage.setItem(
+            "deviceArray",
+            JSON.stringify([
+              ...local,
+              {
+                name: name,
+                macAddress: "00:1B:44:3A:B7",
+                ip: ipVal,
+                createdDate: "2021-05-31",
+                powerConsumption: power,
+              },
+            ]),
+          );
+    }else{
+        localStorage.setItem(
+            "deviceArray",
+            JSON.stringify([
+                            {
+                name: name,
+                macAddress: "00:1B:44:3A:B7",
+                ip: ipVal,
+                createdDate: "2021-05-31",
+                powerConsumption: power,
+              },
+            ]),
+          );
     }
-});
+    name = "";
+    ipVal = "";
+    power ="";
+    updateChart();
 
-///////
+});
+const tableRows = Array.from(tableBody.querySelectorAll("tr"))
+let totalPower = tableRows.reduce((pre, row) => {
+    return (pre += parseInt(row.cells[4].innerHTML));
+  }, 0);
+  tfoot.querySelector("tr").children[1].innerHTML = totalPower;
+
+function random_color() {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    return "rgb(" + x + "," + y + "," + z + ")";
+}
+function bgColor(a) {
+    var bg = [];
+    for(var i=0 ;i<a ;i++){
+        bg.push(random_color());
+    }
+    return bg;
+}
+bgColor(4);
+console.log(bgColor);
+function updateChart() {
+
+    random_color();
+    const tableRows = Array.from(tbody.querySelectorAll("tr"));
+    let labels = tableRows.map((row) => {
+      return row.cells[0].innerHTML;
+    });
+    let powerCons = tableRows.map((row) => {
+      return row.cells[4].innerHTML;
+    });
+    // const data = {
+    //     labels: [
+
+    //     ],
+    //     datasets: [{
+    //       label: 'My First Dataset',
+    //       data: powerCons,
+    //       backgroundColor:  random_color(),
+    //     }]
+    //   };
+    console.log(powerCons);
+
+    new Chart("myChart", {
+        type: "doughnut",
+        data: {
+        labels: labels,
+        datasets: [{
+            backgroundColor: bgColor(powerCons.length),
+            data: powerCons
+        }]
+        },
+        options: {
+            scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Power Consumption'
+                }
+            },
+        }
+    });
+}

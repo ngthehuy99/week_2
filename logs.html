@@ -4,9 +4,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Logs</title>
+    <link rel="stylesheet" href="/src/css/logs.css">
+    <link rel="stylesheet" href="/src/css/dashboard.css">
+    <link rel="stylesheet" href="/src/css/grid.css">
+    <link rel="stylesheet" href="/src/css/base.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
+    <div class="app grid wide">
+        <div class="container row">
+            
+            <div class="nav l-2">
+                <div class="burger__account">
+                    <i class="material-icons user__icon">account_circle</i>
+                    <span class="account__name">Welcome John</span>
+                </div>
+                <div class="nav__title">
+                    <i class="material-icons">important_devices</i>
+                    <span>Device Manager</span>
+                </div>
+                <ul class="menu">
+                    <li class="menu__item ">
+                        <i class="material-icons menu-icons">dashboard</i>
+                        Dashboard</a></li>
+                    <li class="menu__item menu__item-active "><a>
+                        <i class="material-icons menu-icons">history</i>
+                        Logs</a></li>
+                    <li class="menu__item"><a>
+                        <i class="material-icons menu-icons">settings</i>
+                        Settings</a></li>
+                </ul>
+            </div>
+            <div class="l-10">
+                <div class="row account justify-end align-content-center">
+                    <div class="user__account">
+                        <i class="material-icons user__icon">account_circle</i>
+                        <span class="account__name">Welcome John</span>
+                    </div>
+                </div>
+                <div class="row main-contain justify-content-center">
+
+                    <div class="contain">
+                        <button id="burger" class="" type="submit">
+                            <i class="material-icons burger-icon">menu</i>
+                            <i class="material-icons close-icon">close</i>
+                        </button>
+                        <div class="contain__nav">
+                            <h2>Action Logs</h2>
+                            <div class="search__form">
+                                <input type="text">
+                                <button class="btn" type="submit">Search</button>
+                            </div>
+                        </div>
+                        <div class="table">
+                            <table class="table__content">
+                                <thead>
+                                    <tr class="table__header">
+                                        <th class="table__column text-left">Device ID#</th>
+                                        <th class="table__column">Name</th>
+                                        <th class="table__column">Action</th>
+                                        <th class="table__column">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="data"></tbody>
+                                
+                            </table>
     
+                        </div>
+                        <div class="pagination"></div>
+                        <ul class="pagination">
+                            <li class="page-item">
+                              <button class="page-link" id="prevButton">Prev</button>
+                            </li>
+                            <li class="page-item">
+                              <button class="page-link" id="nextButton">Next</button>
+                            </li>
+                          </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/src/js/logs.js"></script>
 </body>
 </html>
