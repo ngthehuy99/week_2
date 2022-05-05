@@ -1,4 +1,29 @@
 .contain__nav {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
+}
+.search {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    margin-right: 5px;
+}
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.pagination__item {
+    padding: 10px 15px;
+    background-color: #ffffff;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 16px;
+}
+.pagination__active {
+    background-color: #32a4d4;
+    color: #ffffff;
 }

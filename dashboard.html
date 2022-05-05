@@ -22,16 +22,19 @@
                 </div>
                 <div class="nav__title">
                     <i class="material-icons">important_devices</i>
-                    <span>Device Manager</span>
+                    <a href="/dashboard.html">
+                        <span>Device Manager</span>
+                    </a>
                 </div>
                 <ul class="menu">
                     <li class="menu__item menu__item-active ">
-                        <i class="material-icons menu-icons">dashboard</i>
-                        Dashboard</a></li>
+                        <a href="/dashboard.html">
+                            <i class="material-icons menu-icons">dashboard</i>
+                            Dashboard</a></li>
                     <li class="menu__item"><a href="/logs.html">
                         <i class="material-icons menu-icons">history</i>
                         Logs</a></li>
-                    <li class="menu__item"><a>
+                    <li class="menu__item"><a href="/">
                         <i class="material-icons menu-icons">settings</i>
                         Settings</a></li>
                 </ul>
@@ -105,7 +108,7 @@
                         <div class="row">
                             <div class="l-5">
                                 <div class="chart">
-                                    <canvas id="myChart"></canvas>
+                                    <canvas class="chart__content" id="myChart"></canvas>
                                 </div>
                             </div>
                             <div class="l-7">

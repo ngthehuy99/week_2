@@ -13,25 +13,6 @@ let closeIcon = document.querySelector('.close-icon');
 let menuIcon = document.querySelector('.burger-icon');
 
 
-
-burger.addEventListener("click", ()=>{
-    if(menu.classList.contains("show")){
-        menu.classList.remove("show");
-        closeIcon.classList.remove("show");
-        menuIcon.style.display = "block";
-    }
-    else {
-        menu.classList.add("show");
-        closeIcon.classList.add("show");
-        menuIcon.style.display = "none";
-    }
-});
-    
-
-
-function validate(){
-    
-}
 if(local){
     local.forEach(element => {
         let template = `
@@ -46,6 +27,8 @@ if(local){
         tbody.innerHTML += template;
         updateChart();
     });
+}else{
+    updateChart();
 }
 const table = document.querySelector(".table__content");
 const tableBody = table.getElementsByTagName("tbody")[0];
@@ -63,7 +46,7 @@ submitForm.addEventListener("submit", (e)=>{
     }else if (ipVal == "") {
         alert("Khong the de trong ip");
         return;
-    }else if (power == "") {
+    }else if (power == "" && !power.isNaN()) {
         alert("Khong the de trong power consumption");
         return;
     }
@@ -82,7 +65,6 @@ submitForm.addEventListener("submit", (e)=>{
     let totalPower = tableRows.reduce((pre, row) => {
         return (pre += parseInt(row.cells[4].innerHTML));
       }, 0);
-      console.log(totalPower);
       tfoot.querySelector("tr").children[1].innerHTML = totalPower;
     if(local){
         localStorage.setItem(
@@ -102,7 +84,7 @@ submitForm.addEventListener("submit", (e)=>{
         localStorage.setItem(
             "deviceArray",
             JSON.stringify([
-                            {
+            {
                 name: name,
                 macAddress: "00:1B:44:3A:B7",
                 ip: ipVal,
@@ -128,20 +110,17 @@ function random_color() {
     var x = Math.floor(Math.random() * 256);
     var y = Math.floor(Math.random() * 256);
     var z = Math.floor(Math.random() * 256);
-    return "rgb(" + x + "," + y + "," + z + ")";
+    return rgb = "rgb(" + x + "," + y + "," + z + ")";
 }
-function bgColor(a) {
+function bgColor(a){
+    
     var bg = [];
     for(var i=0 ;i<a ;i++){
         bg.push(random_color());
     }
     return bg;
 }
-bgColor(4);
-console.log(bgColor);
 function updateChart() {
-
-    random_color();
     const tableRows = Array.from(tbody.querySelectorAll("tr"));
     let labels = tableRows.map((row) => {
       return row.cells[0].innerHTML;
@@ -149,40 +128,48 @@ function updateChart() {
     let powerCons = tableRows.map((row) => {
       return row.cells[4].innerHTML;
     });
-    // const data = {
-    //     labels: [
-
-    //     ],
-    //     datasets: [{
-    //       label: 'My First Dataset',
-    //       data: powerCons,
-    //       backgroundColor:  random_color(),
-    //     }]
-    //   };
-    console.log(powerCons);
-
-    new Chart("myChart", {
-        type: "doughnut",
-        data: {
-        labels: labels,
-        datasets: [{
-            backgroundColor: bgColor(powerCons.length),
-            data: powerCons
-        }]
+    console.log(powerCons.length)
+    console.log(random_color(powerCons.length));
+    const ctx = document.querySelector(".chart__content").getContext("2d");
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "chart",
+          data: powerCons,
+          backgroundColor: bgColor(powerCons.length),
+          hoverOffset: 4,
         },
-        options: {
-            scales: {
-                y: {
-                  beginAtZero: true,
-                },
-              },
-
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Power Consumption'
-                }
-            },
-        }
+      ],
+    };
+    let chartStatus = Chart.getChart("myChart");
+    if (chartStatus != undefined) {
+      chartStatus.destroy();
+    }
+    const myChart = new Chart(ctx, {
+      type: "doughnut",
+      data: data,
+      options: {
+        plugins: {
+            title: {
+              display: true,
+              text: 'Power Consumption'
+            }
+          }
+      },
     });
+
 }
+
+burger.addEventListener("click", ()=>{
+    if(menu.classList.contains("show")){
+        menu.classList.remove("show");
+        closeIcon.classList.remove("show");
+        menuIcon.style.display = "block";
+    }
+    else {
+        menu.classList.add("show");
+        closeIcon.classList.add("show");
+        menuIcon.style.display = "none";
+    }
+});

@@ -27,3 +27,12 @@ a {
 .text-left{
     text-align: left;
 }
+.btn {
+    padding: 10px 15px;
+    color: #ffffff;
+    border: transparent;
+    border-radius: 5px;
+    background-color: #F28E19;
+    font-size: 16px;
+    cursor: pointer;
+}

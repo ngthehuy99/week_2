@@ -24,11 +24,11 @@
     padding: 15px 10px 15px 60px;
 }
 .menu__item-active {
-    color: #25b5f5;
+    color: #32a4d4;
 }
 .menu__item:hover {
     cursor: pointer;
-    color: #25b5f5;
+    color: #32a4d4;
     background-color: #F5F5F5;
 }
 .menu-icons {
@@ -117,16 +117,8 @@
     width: fit-content;
     padding: 10px 30px !important;
     margin: 0 auto;
-}
-.btn {
-    padding: 10px 15px;
-    color: #ffffff;
-    border: transparent;
-    border-radius: 10px;
-    background-color: #F28E19;
-    font-size: 16px;
     font-weight: 600;
-    cursor: pointer;
+    border-radius: 10px;
 }
 .chart {
     background-color: #ffffff;
@@ -138,6 +130,9 @@
     left: 15px;
     top: 10px;
     z-index: 1;
+}
+.close-icon {
+    display: none !important;
 }
 .burger__account {
     padding: 10px;

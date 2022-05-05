@@ -23,16 +23,20 @@
                 </div>
                 <div class="nav__title">
                     <i class="material-icons">important_devices</i>
-                    <span>Device Manager</span>
+                    <a href="/dashboard.html">
+                        <span>Device Manager</span>
+                    </a>
                 </div>
                 <ul class="menu">
                     <li class="menu__item ">
+                        <a href="/dashboard.html">
                         <i class="material-icons menu-icons">dashboard</i>
                         Dashboard</a></li>
-                    <li class="menu__item menu__item-active "><a>
+                    <li class="menu__item menu__item-active ">
+                        <a href="/logs.html">
                         <i class="material-icons menu-icons">history</i>
                         Logs</a></li>
-                    <li class="menu__item"><a>
+                    <li class="menu__item"><a href="/">
                         <i class="material-icons menu-icons">settings</i>
                         Settings</a></li>
                 </ul>
@@ -54,7 +58,7 @@
                         <div class="contain__nav">
                             <h2>Action Logs</h2>
                             <div class="search__form">
-                                <input type="text">
+                                <input id="input__search" onkeyup="search()" class="search" type="text">
                                 <button class="btn" type="submit">Search</button>
                             </div>
                         </div>
@@ -73,15 +77,9 @@
                             </table>
     
                         </div>
-                        <div class="pagination"></div>
-                        <ul class="pagination">
-                            <li class="page-item">
-                              <button class="page-link" id="prevButton">Prev</button>
-                            </li>
-                            <li class="page-item">
-                              <button class="page-link" id="nextButton">Next</button>
-                            </li>
-                          </ul>
+                        <ul class="content__pages pagination">
+          
+                        </ul>
 
                     </div>
                 </div>
