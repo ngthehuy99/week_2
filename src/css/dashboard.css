@@ -200,11 +200,15 @@
         margin-top: 50px;
     }
     .row{
-        flex-direction: column;
+        display: unset !important;
+    }
+    .link::before {
+        padding: 20px 75px;
     }
     .contain {
         width: auto;
-        
+        margin: 0 15px;
+        padding-top: 35px;
     }
     .form{
         margin-left: 0;

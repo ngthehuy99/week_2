@@ -21,7 +21,7 @@ function setSuccess(ele) {
   ele.parentNode.classList.add('success');
 }
 function isNumber(number) {
-  return /{0-9}/.test(number);
+  return /[0,9]/.test(number);
 }
 
 if(local){

@@ -90,35 +90,38 @@ let data = [{"id":1,"name":"Victor and the Secret of Crocodile Mansion","action"
 {"id":78,"name":"Brainstorm (Bicho de Sete Cabeças)","action":"Drama","date":"9/11/2021"},
 {"id":79,"name":"Zero Effect","action":"Comedy|Mystery|Thriller","date":"28/2/2022"},
 {"id":80,"name":"Men to Kiss","action":"Comedy|Romance","date":"10/12/2021"}]
-    let globalCurrentPage;
-    function pagination(data) {
-        tableBody.innerHTML = "";
-        pageLinks.innerHTML = "";
-        let currentPage = 1;
+
+let current = 1;
+function pagination(data, currentPage) {
+    tableBody.innerHTML = "";
+    pageLinks.innerHTML = "";
+    currentPage = current;
+    
+    data
+        .slice((currentPage - 1 ) * pageSize, (currentPage - 1) * pageSize + pageSize)
+        .forEach((e) => {
+            let template = `
+                <tr class="table__row">
+                    <td class="table__item text-left">${e.id}</td>
+                    <td class="table__item">${e.name}</td>
+                    <td class="table__item">${e.action}</td>
+                    <td class="table__item">${e.date}</td>
+                </tr>
+            `;
+            tbody.innerHTML += template;
+        });
+    let totalPage = Math.ceil(data.length / pageSize);
+    for (let i = 1; i <= totalPage; i++) {
         
-        data
-            .slice((currentPage - 1 ) * pageSize, (currentPage - 1) * pageSize + pageSize)
-            .forEach((e) => {
-                let template = `
-                    <tr class="table__row">
-                        <td class="table__item text-left">${e.id}</td>
-                        <td class="table__item">${e.name}</td>
-                        <td class="table__item">${e.action}</td>
-                        <td class="table__item">${e.date}</td>
-                    </tr>
-                `;
-                tbody.innerHTML += template;
-            });
-        let totalPage = Math.ceil(data.length / pageSize);
-        for (let i = 1; i <= totalPage; i++) {
-            let page = document.createElement("li");
-            page.classList.add("pagination__item");
-            page.innerHTML = i;
-            page.addEventListener("click", (e) => {
+        let page = document.createElement("li");
+        page.classList.add("pagination__item");
+        page.innerHTML = i;
+        page.addEventListener("click", (e) => {
             tableBody.innerHTML = "";
             pageLinks.children[currentPage - 1].classList.remove("pagination__active");
             currentPage = parseInt(page.innerHTML);
             pageLinks.children[currentPage - 1].classList.add("pagination__active");
+            
             data
                 .slice(
                 (parseInt(page.innerHTML) - 1) * pageSize,
@@ -135,64 +138,50 @@ let data = [{"id":1,"name":"Victor and the Secret of Crocodile Mansion","action"
                     `;
                     tbody.innerHTML += template;
                 });
-            });
-            prev.addEventListener('click', (e)=>{
-                
-                    tableBody.innerHTML = "";
-                    currentPage = parseInt(page.innerHTML) -1;
-                    console.log(currentPage)
-                    data
-                        .slice(
-                        (parseInt(page.innerHTML) - 1 -1) * pageSize,
-                        (parseInt(page.innerHTML) - 1 -1) * pageSize + pageSize,
-                        )
-                        .forEach((e) => {
-                            let template = `
-                            <tr class="table__row">
-                                <td class="table__item text-left">${e.id}</td>
-                                <td class="table__item">${e.name}</td>
-                                <td class="table__item">${e.action}</td>
-                                <td class="table__item">${e.date}</td>
-                            </tr>
-                            `;
-                            tbody.innerHTML += template;
-                        });
-               
-            });
-            next.addEventListener('click', ()=>{
-                if(pageLinks.children[currentPage - 1] == 0){
-                    prev.classList.add('disable');
-                }else {
-                    tableBody.innerHTML = "";
-                currentPage +=1;
-                data
-                    .slice(
-                    (parseInt(page.innerHTML) - 1) * pageSize,
-                    (parseInt(page.innerHTML) - 1) * pageSize + pageSize,
-                    )
-                    .forEach((e) => {
-                        let template = `
-                        <tr class="table__row">
-                            <td class="table__item text-left">${e.id}</td>
-                            <td class="table__item">${e.name}</td>
-                            <td class="table__item">${e.action}</td>
-                            <td class="table__item">${e.date}</td>
-                        </tr>
-                        `;
-                        tbody.innerHTML += template;
-                    });
-    
-                }
-            });
-            pageLinks.appendChild(page);
-        }
+        });
         
+        
+        pageLinks.appendChild(page);
+    }
+    
+    pageLinks.children[currentPage - 1].classList.add("pagination__active");
+    let totalItem = data.length;
+    tfoot.querySelector("tr").children[1].innerHTML = totalItem;
+} 
+pagination(data, current);
+prev.addEventListener('click', ()=>{
+    if(current>1){
+        // currentPage = currentPage -1;
+        tableBody.innerHTML = "";
+        pageLinks.children[currentPage - 1].classList.remove("pagination__active");
+        currentPage = parseInt(page.innerHTML) - 1;
         pageLinks.children[currentPage - 1].classList.add("pagination__active");
-        let totalItem = data.length;
-        tfoot.querySelector("tr").children[1].innerHTML = totalItem;
-    } 
-    pagination(data);
-
+        console.log(currentPage)
+        data
+            .slice(
+            (parseInt(page.innerHTML) - 1) * pageSize,
+            (parseInt(page.innerHTML) - 1) * pageSize + pageSize,
+            )
+            .forEach((e) => {
+                let template = `
+                <tr class="table__row">
+                    <td class="table__item text-left">${e.id}</td>
+                    <td class="table__item">${e.name}</td>
+                    <td class="table__item">${e.action}</td>
+                    <td class="table__item">${e.date}</td>
+                </tr>
+                `;
+                tbody.innerHTML += template;
+            });       
+        // pagination(data, current-1);
+        pagination(data, current);
+    }
+})
+prev.addEventListener('click', ()=>{
+    if(current>1){
+        pagination(data, current-1);
+    }
+})
 
 var input = document.getElementById("input__search");
 searchBtn.addEventListener('click', ()=>{
