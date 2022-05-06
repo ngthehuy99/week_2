@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/src/css/dashboard.css">
-    <link rel="stylesheet" href="/src/css/grid.css">
-    <link rel="stylesheet" href="/src/css/base.css">
+    <link rel="stylesheet" href="./src/css/dashboard.css">
+    <link rel="stylesheet" href="./src/css/grid.css">
+    <link rel="stylesheet" href="./src/css/base.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -22,19 +22,19 @@
                 </div>
                 <div class="nav__title">
                     <i class="material-icons">important_devices</i>
-                    <a href="/dashboard.html">
+                    <a href="./dashboard.html">
                         <span>Device Manager</span>
                     </a>
                 </div>
                 <ul class="menu">
                     <li class="menu__item menu__item-active ">
-                        <a href="/dashboard.html">
+                        <a class="link" href="./dashboard.html">
                             <i class="material-icons menu-icons">dashboard</i>
                             Dashboard</a></li>
-                    <li class="menu__item"><a href="/logs.html">
+                    <li class="menu__item"><a class="link" href="./logs.html">
                         <i class="material-icons menu-icons">history</i>
                         Logs</a></li>
-                    <li class="menu__item"><a href="/">
+                    <li class="menu__item"><a class="link" href="#">
                         <i class="material-icons menu-icons">settings</i>
                         Settings</a></li>
                 </ul>
@@ -113,11 +113,20 @@
                             </div>
                             <div class="l-7">
                                 <div class="form">
-                                    <form class="form__item">
-                                        <input id="form__item-name" class="form__input" type="text" placeholder="name">
-                                        <input id="form__item-ip" class="form__input" type="text" placeholder="IP">
-                                        <input id="form__item-power" class="form__input" type="text" placeholder="Power">
-                                        <button id="add__btn" class="form__btn btn" type="submit" >ADD DEVICE</button>
+                                    <form id="form" class="form__item">
+                                        <div class="form__item-input">
+                                            <input id="form__item-name" class="form__input" type="text" placeholder="name">
+                                            <small class="error-text">Error message</small>
+                                        </div>
+                                        <div class="form__item-input">
+                                            <input id="form__item-ip" class="form__input" type="text" placeholder="IP">
+                                            <small class="error-text">Error message</small>
+                                        </div>
+                                        <div class="form__item-input">
+                                            <input id="form__item-power" class="form__input" pattern="{0,9}" type="text" placeholder="Power">
+                                            <small class="error-text">Error message</small>
+                                        </div>
+                                        <button id="add__btn" class="form__btn btn"  type="submit" >ADD DEVICE</button>
                                     </form>
                                 </div>
                             </div>
@@ -128,6 +137,6 @@
 
         </div>
     </div>
-<script src="/src/js/dashboard.js"></script>
+<script src="./src/js/dashboard.js"></script>
 </body>
 </html>

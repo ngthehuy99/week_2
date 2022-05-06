@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logs</title>
-    <link rel="stylesheet" href="/src/css/logs.css">
-    <link rel="stylesheet" href="/src/css/dashboard.css">
-    <link rel="stylesheet" href="/src/css/grid.css">
-    <link rel="stylesheet" href="/src/css/base.css">
+    <link rel="stylesheet" href="./src/css/logs.css">
+    <link rel="stylesheet" href="./src/css/dashboard.css">
+    <link rel="stylesheet" href="./src/css/grid.css">
+    <link rel="stylesheet" href="./src/css/base.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -23,20 +23,20 @@
                 </div>
                 <div class="nav__title">
                     <i class="material-icons">important_devices</i>
-                    <a href="/dashboard.html">
+                    <a href="./dashboard.html">
                         <span>Device Manager</span>
                     </a>
                 </div>
                 <ul class="menu">
                     <li class="menu__item ">
-                        <a href="/dashboard.html">
+                        <a class="link" href="./dashboard.html">
                         <i class="material-icons menu-icons">dashboard</i>
                         Dashboard</a></li>
                     <li class="menu__item menu__item-active ">
-                        <a href="/logs.html">
+                        <a class="link"  href="./logs.html">
                         <i class="material-icons menu-icons">history</i>
                         Logs</a></li>
-                    <li class="menu__item"><a href="/">
+                    <li class="menu__item"><a class="link"  href="#">
                         <i class="material-icons menu-icons">settings</i>
                         Settings</a></li>
                 </ul>
@@ -58,12 +58,12 @@
                         <div class="contain__nav">
                             <h2>Action Logs</h2>
                             <div class="search__form">
-                                <input id="input__search" onkeyup="search()" class="search" type="text">
-                                <button class="btn" type="submit">Search</button>
+                                <input id="input__search" onkeyup="myFunction()" class="search" type="text">
+                                <button id="search-btn" class="btn" type="submit">Search</button>
                             </div>
                         </div>
                         <div class="table">
-                            <table class="table__content">
+                            <table class="table__content" id="table">
                                 <thead>
                                     <tr class="table__header">
                                         <th class="table__column text-left">Device ID#</th>
@@ -72,15 +72,31 @@
                                         <th class="table__column">Date</th>
                                     </tr>
                                 </thead>
-                                <tbody id="data"></tbody>
+                                <tbody id="data">
+
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table__row">
+                                        <th class="table__column text-left" colspan="3">Total</th>
+                                        <th class="table__column"></th>
+                                    </tr>
+                                </tfoot>
                                 
                             </table>
     
                         </div>
-                        <ul class="content__pages pagination">
-          
-                        </ul>
+                        <div class="pagi">
 
+                            <button id="prev" class="pagi-btn">
+                                <i class="material-icons">navigate_before</i>
+                            </button>
+                            <ul class="content__pages pagination">
+                                
+                            </ul>
+                            <button id="next" class="pagi-btn">
+                                <i class="material-icons">navigate_next</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,6 +104,6 @@
         </div>
     </div>
 
-    <script src="/src/js/logs.js"></script>
+    <script src="./src/js/logs.js"></script>
 </body>
 </html>

@@ -57,14 +57,16 @@
 }
 .contain {
     justify-content: center;
-    min-width: 900px;
-    max-width: 1200px;
+    width: 70%;
+    max-width: 1000px;
 }
 .table{ 
     margin-bottom: 50px;
     width: 100%;
     background: #fff;
     border-radius: 2px;
+    max-height: 350px;
+    overflow-y: scroll;
 }
 .table__content{
     width: 100%;
@@ -112,6 +114,7 @@
     padding: 15px 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 16px;
+    width: 96%;
 }
 .form__btn {
     width: fit-content;
@@ -139,6 +142,30 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+.form__item-input {
+    position: relative;
+}
+.error-text{
+    display: none;
+    position: absolute;
+    color: red;
+    bottom: 10%;
+    left: 0;
+}
+
+@media only screen and (min-width: 1113px) and (max-width: 1343px) {
+    .contain {
+        width: auto;
+    }
+}
+@media only screen and (min-width: 900px) and (max-width: 1112px) {
+    .contain {
+        width: auto;
+    }
+    .nav {
+        display: none;
+    }
 }
 @media only screen and (min-width: 415px) {
     .burger__account {
@@ -176,8 +203,7 @@
         flex-direction: column;
     }
     .contain {
-        min-width: unset;
-        max-width: 100%;
+        width: auto;
         
     }
     .form{

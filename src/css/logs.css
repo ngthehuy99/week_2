@@ -1,3 +1,4 @@
+
 .contain__nav {
     display: flex;
     justify-content: space-between;
@@ -23,7 +24,31 @@
     border-radius: 50%;
     font-size: 16px;
 }
+.pagination__item:hover,
+.pagi-btn:hover {
+    background-color: #d3d3d3;
+
+}
 .pagination__active {
     background-color: #32a4d4;
     color: #ffffff;
+}
+.pagi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagi-btn{
+    padding: 3px 5px;
+    background-color: #ffffff;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 16px;
+    border: none;
+}
+
+.table {
+    max-height: unset !important;
+    overflow-y: unset !important;
 }

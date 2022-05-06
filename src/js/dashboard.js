@@ -2,16 +2,27 @@ let submitForm = document.querySelector('.form__item');
 let tbody = document.querySelector('tbody');
 
 let local = JSON.parse(localStorage.getItem("deviceArray"));
-
 let nameInput = document.querySelector('#form__item-name');
 let ipInput = document.querySelector('#form__item-ip');
 let powerInput = document.querySelector('#form__item-power');
-
 let menu = document.querySelector('.nav');
 let burger = document.querySelector('#burger');
 let closeIcon = document.querySelector('.close-icon');
 let menuIcon = document.querySelector('.burger-icon');
 
+
+
+function setError(ele, message) {
+  let parentEle = ele.parentNode;6
+  parentEle.querySelector('small').innerText = message;
+  parentEle.querySelector('small').classList.add('show');
+}
+function setSuccess(ele) {
+  ele.parentNode.classList.add('success');
+}
+function isNumber(number) {
+  return /{0-9}/.test(number);
+}
 
 if(local){
     local.forEach(element => {
@@ -41,14 +52,19 @@ submitForm.addEventListener("submit", (e)=>{
     let power = powerInput.value;
 
     if(name == ""){
-        alert("Khong the de trong ten cua thiet bi");
-        return;
-    }else if (ipVal == "") {
-        alert("Khong the de trong ip");
-        return;
-    }else if (power == "" && !power.isNaN()) {
-        alert("Khong the de trong power consumption");
-        return;
+      setError(nameInput, 'Tên không được để trống');
+      return;
+    }
+    if (ipVal == "") {
+      setError(ipInput, 'IP không được để trống');
+      return;
+    }
+    if (power == "") {
+      setError(powerInput, 'Power consumption không được để trống');
+      return;
+    }else if (!isNumber(power)) {
+      setError(powerInput, 'Power consumption sai');
+      return;
     }
 
     let template = `
@@ -98,6 +114,11 @@ submitForm.addEventListener("submit", (e)=>{
     ipVal = "";
     power ="";
     updateChart();
+    document.getElementById('form').reset();
+    setError(nameInput,"");
+    setError(ipInput,"");
+    setError(powerInput,"");
+
 
 });
 const tableRows = Array.from(tableBody.querySelectorAll("tr"))
@@ -128,8 +149,6 @@ function updateChart() {
     let powerCons = tableRows.map((row) => {
       return row.cells[4].innerHTML;
     });
-    console.log(powerCons.length)
-    console.log(random_color(powerCons.length));
     const ctx = document.querySelector(".chart__content").getContext("2d");
     const data = {
       labels: labels,

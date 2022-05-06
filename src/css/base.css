@@ -36,3 +36,14 @@ a {
     font-size: 16px;
     cursor: pointer;
 }
+.btn:hover {
+    background-color: #9e601a;
+}
+.link::before{
+    padding: 20px 155px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
